@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celia Cruz: Queen of Salsa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .content {
+            font-size: 1.2em;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 800px;
+        }
+        .visuals {
+            margin-top: 20px;
+        }
+        .visuals img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .quote {
+            font-style: italic;
+            margin-top: 20px;
+        }
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+        }
+        .nav-buttons button {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #333;
+        }
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+            .subtitle {
+                font-size: 1.2em;
+            }
+            .content {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-color: #ffcccb;">
+        <div class="title">Celia Cruz: Queen of Salsa</div>
+        <div class="subtitle">A Cultural Icon and Global Ambassador of Afro-Cuban Music</div>
+        <div class="visuals">
+            <img src="celia-cruz-performance.jpg" alt="Celia Cruz Performing" loading="lazy">
+        </div>
+        <div class="quote">&ldquo;My English is not very good looking, but my music speaks for itself.&rdquo; &mdash; Celia Cruz</div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" style="background-color: #f7e6ff;">
+        <div class="title">Who Was Celia Cruz?</div>
+        <div class="content">
+            Celia Cruz was a pioneer in salsa music and an Afro-Cuban cultural icon. Born in Havana, Cuba, she rose to international fame as the "Queen of Salsa," blending Afro-Cuban rhythms with global music styles.
+        </div>
+        <div class="visuals">
+            <img src="celia-cruz-havana.jpg" alt="Celia Cruz in Havana" loading="lazy">
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" style="background-color: #d8f3dc;">
+        <div class="title">Roots of a Legend</div>
+        <div class="content">
+            Celia Cruz was born in 1925 in Havana, Cuba. Her early career with La Sonora Matancera catapulted her to fame, and her Afro-Cuban rhythms became a foundation for salsa music.
+        </div>
+        <div class="visuals">
+            <img src="celia-sonora.jpg" alt="Celia Cruz with La Sonora Matancera" loading="lazy">
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        document.getElementById('next').addEventListener('click', () => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        });
+
+        // Automatic Slideshow
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
+    </script>
+</body>
+</html>
